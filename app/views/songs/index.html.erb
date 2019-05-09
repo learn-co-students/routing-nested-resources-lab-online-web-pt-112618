@@ -1,3 +1,14 @@
+<% if @artist.present? %>
+<p><%= flash[:alert] %></p>
+  <h1><%= @artist.name %> Songs: </h1>
+  <ul>
+  <% @artist.songs.each do |song| %>
+    <li><%= link_to song.title, song_path(song) %></li>
+  <% end %>
+  </ul>
+
+<% else %>
+<h1>All Songs: </h1>
 <ul>
 <% @songs.each do |song| %>
   <li><%= display_artist(song) %> - <%= link_to song.title, song_path(song) %></li>
@@ -5,3 +16,6 @@
 </ul>
 <br>
 <%= link_to "Add New Song", new_song_path %>
+
+
+<% end %>
