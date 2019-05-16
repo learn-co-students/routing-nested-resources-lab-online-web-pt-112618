@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  resources :artists
+  #child objects can be nested
+  resources :artists do
+    resources  :songs, only: [:index, :show]
+  end
   resources :songs
 end
